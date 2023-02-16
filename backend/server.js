@@ -9,12 +9,23 @@ import allRoutes from "./routes/index.js";
 const app = express();
 const PORT = process.env.PORT || 8000;
 
+// middleware
 app.use(cors());
 app.use(morgan("tiny"));
 app.use(express.json());
 app.use(cookieParser());
 
+// routes
 app.use("/api", allRoutes);
+
+// error handler
+app.use((err, req, res) => {
+  const status = err.status || 500;
+  const message = err.message || "internal server error";
+
+  return res.status(status).json({ message, stack: err.stack });
+});
+// db connect
 const connectDB = async () => {
   try {
     await mongoose
@@ -27,7 +38,7 @@ const connectDB = async () => {
     process.exit(1);
   }
 };
-
+// run express server
 app.listen(PORT, () => {
   connectDB();
   console.log(`the server has started on port ${PORT}`);
