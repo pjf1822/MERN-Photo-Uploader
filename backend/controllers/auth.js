@@ -1,7 +1,7 @@
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import createError from "../utils/error.js";
+import createError from "../utils/createError.js";
 
 export const register = async (req, res) => {
   // assign req.body
@@ -83,6 +83,25 @@ export const login = async (req, res, next) => {
       .status(200)
       .json({ name: user.name, email: user.email, message: "login success" });
   } catch (error) {
-    return next(err);
+    return next(error);
   }
+};
+
+export const logout = async (req, res) => {
+  res.clearCookie("access_token");
+  return res.status(200).json({ message: "logged out" });
+};
+
+export const isLoggedIn = async (req, res) => {
+  const token = req.cookies.access_token;
+
+  if (!token) {
+    return res.json(false);
+  }
+  return jwt.verify(token, process.env.JWT_SECRET, (err) => {
+    if (err) {
+      return res.json(false);
+    }
+    return res.json(true);
+  });
 };
