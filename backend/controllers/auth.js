@@ -48,8 +48,9 @@ export const login = async (req, res, next) => {
 
   // check if user exists
   try {
-    const user = await User.findOne({ email }).select("name email password");
-
+    const user = await User.findOne({ email }).select(
+      "username email password"
+    );
     if (!user) {
       return next(
         createError({ status: 404, message: "User not found with the email" })
@@ -65,14 +66,16 @@ export const login = async (req, res, next) => {
       );
     }
 
+    const payload = {
+      id: user._id,
+      username: user.username,
+    };
+
     // create jsonwebtoken for the cookie
-    const token = jwt.sign(
-      { id: user._id, name: user.name },
-      process.env.JWT_SECRET,
-      {
-        expiresIn: "1d",
-      }
-    );
+    const token = jwt.sign(payload, process.env.JWT_SECRET, {
+      expiresIn: "1d",
+    });
+
     // assign the cookie and return the status/json
     return res
       .cookie("access_token", token, {
@@ -81,7 +84,12 @@ export const login = async (req, res, next) => {
         expires: new Date(Date.now() + 1000 * 86400), // 1 day
       })
       .status(200)
-      .json({ name: user.name, email: user.email, message: "login success" });
+      .json({
+        username: user.username,
+        email: user.email,
+        password: user.password,
+        message: "login success",
+      });
   } catch (error) {
     return next(error);
   }

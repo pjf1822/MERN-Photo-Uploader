@@ -12,6 +12,8 @@ export default (req, res, next) => {
         createError({ status: 401, message: "Unauthorized, invalid token" })
       );
     }
+
+    console.log(decoded, "decoded");
     req.user = decoded;
     return next();
   });
