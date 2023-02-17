@@ -31,7 +31,13 @@ const Login = () => {
       <form className={classes.authForm} onSubmit={login}>
         <label htmlFor="email">
           email:
-          <input name="email" type="email" placeholder="email" required />
+          <input
+            name="email"
+            id="email"
+            type="email"
+            placeholder="email"
+            required
+          />
         </label>
         <br />
         <label htmlFor="password">

@@ -27,7 +27,13 @@ const Register = () => {
       <form className={classes.authForm} onSubmit={register}>
         <label htmlFor="name">
           Full Name:
-          <input name="name" type="text" placeholder="Full Name" required />
+          <input
+            name="name"
+            id="name"
+            type="text"
+            placeholder="Full Name"
+            required
+          />
         </label>
         <label htmlFor="email">
           email:
