@@ -3,8 +3,9 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import createError from "../utils/createError.js";
 
-export const register = async (req, res) => {
+export const register = async (req, res, next) => {
   // assign req.body
+  console.log(req.body);
   const { username, email, password } = req.body;
 
   // all fields must be filled out
@@ -16,9 +17,11 @@ export const register = async (req, res) => {
       })
     );
   }
+  console.log("got this far");
 
   // does the user already exist
   const userExists = await User.findOne({ email });
+  console.log("apparently the user doesnt exist");
 
   if (userExists) {
     res.status(400).send("this user already exists");
