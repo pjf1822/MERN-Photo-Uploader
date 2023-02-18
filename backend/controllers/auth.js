@@ -102,9 +102,7 @@ export const logout = async (req, res) => {
 };
 
 export const isLoggedIn = async (req, res) => {
-  console.log(
-    "inside the isloggedin"
-  )
+ 
   const token = req.cookies.access_token;
 
   if (!token) {
