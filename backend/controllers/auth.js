@@ -5,7 +5,6 @@ import createError from "../utils/createError.js";
 
 export const register = async (req, res, next) => {
   // assign req.body
-  console.log(req.body);
   const { username, email, password } = req.body;
 
   // all fields must be filled out
@@ -17,11 +16,9 @@ export const register = async (req, res, next) => {
       })
     );
   }
-  console.log("got this far");
 
   // does the user already exist
   const userExists = await User.findOne({ email });
-  console.log("apparently the user doesnt exist");
 
   if (userExists) {
     res.status(400).send("this user already exists");
@@ -84,7 +81,8 @@ export const login = async (req, res, next) => {
       .cookie("access_token", token, {
         httpOnly: true,
         path: "/",
-        expires: new Date(Date.now() + 1000 * 86400), // 1 day
+        expires: new Date(Date.now() + 1000 * 86400), // 1 day 
+        SameSite: "Lax",
       })
       .status(200)
       .json({
@@ -104,6 +102,9 @@ export const logout = async (req, res) => {
 };
 
 export const isLoggedIn = async (req, res) => {
+  console.log(
+    "inside the isloggedin"
+  )
   const token = req.cookies.access_token;
 
   if (!token) {
