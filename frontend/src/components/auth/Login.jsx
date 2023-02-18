@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import classes from "./AuthForm.module.scss";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,10 +18,12 @@ const Login = () => {
         email,
         password,
       });
-
+      toast.success('Logged In successfully');
       navigate("/");
     } catch (error) {
       console.log(error);
+      toast.error('login failed');
+
     }
   };
   return (
