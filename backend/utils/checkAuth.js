@@ -13,7 +13,6 @@ export default (req, res, next) => {
       );
     }
 
-    console.log(decoded, "decoded");
     req.user = decoded;
     return next();
   });

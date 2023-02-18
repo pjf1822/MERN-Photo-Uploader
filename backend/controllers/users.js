@@ -36,7 +36,19 @@ export const getUserInfo = async (req, res, next) => {
   }
 };
 
+export const getPassword = async (req, res, next) => {
+  // get id from the cookies
+  const { id } = req.user;
+  try {
+    const userExists = await User.findById(id).select("password");
+    return res.status(200).json(userExists);
+  } catch (error) {
+    return next(error);
+  }
+};
+
 export const changePassword = async (req, res, next) => {
+  console.log(req.user.id, req.body);
   const id = req.user.id;
   const { oldPassword, newPassword } = req.body;
   const getUser = await User.findById(id);

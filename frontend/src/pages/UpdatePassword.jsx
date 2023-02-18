@@ -1,7 +1,13 @@
 import React from "react";
+import UpdatePasswordForm from "../components/UpdatePasswordForm";
 
 const UpdatePassword = () => {
-  return <div>UpdatePassword</div>;
+  return (
+    <div>
+      hey this works yeah
+      <UpdatePasswordForm />
+    </div>
+  );
 };
 
 export default UpdatePassword;
