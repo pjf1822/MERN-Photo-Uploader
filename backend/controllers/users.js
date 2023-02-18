@@ -6,13 +6,14 @@ import createError from "../utils/createError.js";
 export const updateUsername = async (req, res, next) => {
   // pull info from request
   const id = req.user.id;
-  const { username } = req.body;
+  const { username, email } = req.body;
 
   try {
     const updatedUser = await User.findByIdAndUpdate(
       id,
       {
         username,
+        email,
       },
       {
         new: true,

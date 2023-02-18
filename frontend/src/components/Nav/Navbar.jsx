@@ -42,10 +42,15 @@ const Navbar = () => {
         <div>
           <h1 className={classes.name}> {user.name}</h1>
           <h1 className={classes.email}> {user.email}</h1>
-          <Link to="/edit-profile">Edit</Link>
         </div>
       </div>
       <nav>
+        <Link className={classes.updatePasswordLink} to="/edit-profile">
+          edit profile
+        </Link>
+        <Link className={classes.updatePasswordLink} to="/update-password">
+          update password
+        </Link>
         <button type="button" className={classes.logout} onClick={handleLogout}>
           logout
         </button>

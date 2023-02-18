@@ -4,8 +4,10 @@ import { BsArrowLeftShort } from "react-icons/bs";
 import axios from "axios";
 import toast from "react-hot-toast";
 import classes from "./EditProfileForm.module.scss";
+import { useNavigate } from "react-router-dom";
 
 const EditProfileForm = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     username: "",
     email: "",
@@ -26,8 +28,10 @@ const EditProfileForm = () => {
     e.preventDefault();
     try {
       const res = await axios.put("api/users/me", user);
+      console.log(res);
       toast.success("profile updated ");
       setUser(res.data);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
