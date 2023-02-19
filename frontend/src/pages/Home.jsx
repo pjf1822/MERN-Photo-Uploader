@@ -5,7 +5,6 @@ const Home = () => {
   return (
     <Layout>
       <Navbar />
-      home
     </Layout>
   );
 };

@@ -40,11 +40,11 @@ const Navbar = () => {
       <div className={classes.userInfo}>
         <FaUserAlt className={classes.userIcon} />
         <div>
-          <h1 className={classes.name}> {user.name}</h1>
+          <h1 className={classes.name}> {user.username}</h1>
           <h1 className={classes.email}> {user.email}</h1>
         </div>
       </div>
-      <nav>
+      <nav className={classes.nav}>
         <Link className={classes.updatePasswordLink} to="/edit-profile">
           edit profile
         </Link>
