@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import classes from "./PhotoGallery.module.scss";
+import Photo from "../Photo/Photo";
 const PhotoGallery = () => {
   const [photos, setPhotos] = useState([]);
 
@@ -17,12 +19,17 @@ const PhotoGallery = () => {
   }, []);
 
   return (
-    <div>
+    <div className={classes.galleryWrapper}>
       PhotoGallery
-      {photos.map((photo) => {
-        console.log(photo.myFile);
-        return <img src={photo.myFile} alt="" />;
-      })}
+      <div className={classes.photoWrapper}>
+        {photos.map((photo) => {
+          return (
+            <div key={photo._id}>
+              <Photo file={photo.myFile} />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
