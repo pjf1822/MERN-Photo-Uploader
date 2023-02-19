@@ -6,6 +6,5 @@ import checkAuth from "../utils/checkAuth.js";
 
 router.use("/auth", authRoutes);
 router.use("/users", checkAuth, usersRoutes);
-router.use("/photos", checkAuth, photosRoutes);
 
 export default router;
