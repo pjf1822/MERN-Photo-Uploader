@@ -24,3 +24,14 @@ export const uploadPhoto = async (req, res, next) => {
     res.status(409).json({ message: error.message });
   }
 };
+
+export const deletePhoto = async (req, res) => {
+  console.log(req.params, "these are the req params");
+
+  try {
+    await Photo.findByIdAndDelete(req.params.id);
+    return res.json("Task Deleted Successfully");
+  } catch (err) {
+    return res.send(err);
+  }
+};
