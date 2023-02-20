@@ -25,24 +25,20 @@ const PhotoGallery = ({ photos, setPhotos }) => {
 
   return (
     <div className={classes.galleryWrapper}>
-      PhotoGallery
-      <div className={classes.photoWrapper}>
-        {photos &&
-          photos.map((photo) => {
-            return (
-              <div key={photo._id} style={{ height: 100, width: 100 }}>
-                <img
-                  style={{ height: 200, width: 200 }}
-                  src={photo.myFile}
-                  alt=""
-                />
-                <button onClick={() => deleteItem(photo._id)}>
-                  delete this photo
-                </button>
-              </div>
-            );
-          })}
-      </div>
+      {photos &&
+        photos.map((photo) => {
+          return (
+            <div key={photo._id} className={classes.photoWrapper}>
+              <img className={classes.galleryImage} src={photo.myFile} alt="" />
+              <button
+                className={classes.deleteButton}
+                onClick={() => deleteItem(photo._id)}
+              >
+                Delete This Photo
+              </button>
+            </div>
+          );
+        })}
     </div>
   );
 };

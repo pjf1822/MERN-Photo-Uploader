@@ -38,7 +38,6 @@ const Navbar = () => {
   return (
     <header>
       <div className={classes.userInfo}>
-        <FaUserAlt className={classes.userIcon} />
         <div>
           <h1 className={classes.name}> {user.username}</h1>
           <h1 className={classes.email}> {user.email}</h1>
@@ -46,13 +45,13 @@ const Navbar = () => {
       </div>
       <nav className={classes.nav}>
         <Link className={classes.updatePasswordLink} to="/edit-profile">
-          edit profile
+          Edit Profile
         </Link>
         <Link className={classes.updatePasswordLink} to="/update-password">
-          update password
+          Update Password
         </Link>
         <button type="button" className={classes.logout} onClick={handleLogout}>
-          logout
+          Logout
         </button>
       </nav>
     </header>

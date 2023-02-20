@@ -42,7 +42,7 @@ const PhotoUploadForm = ({ postImage, setPostImage, photos }) => {
         >
           <img
             className={classes.galleryFormImage}
-            style={{ height: 200, width: 200 }}
+            style={{ height: 400, width: 400 }}
             src={postImage.myFile}
             alt=""
           />
