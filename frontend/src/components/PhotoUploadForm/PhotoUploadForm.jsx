@@ -9,7 +9,7 @@ const PhotoUploadForm = () => {
 
   const createPost = async (newImage) => {
     try {
-      await axios.post(url, newImage);
+      await axios.post("api/photos/uploads", newImage);
     } catch (error) {
       console.log(error);
     }
