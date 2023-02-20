@@ -1,11 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import classes from "./PhotoUploadForm.module.scss";
 
 const PhotoUploadForm = ({ postImage, setPostImage, photos }) => {
   const createPost = async (newImage) => {
     try {
       await axios.post("api/photos/uploads", newImage);
+      // setPostImage({ myFile: "" });
     } catch (error) {
       toast.error(error.response.statusText);
 
@@ -28,27 +30,37 @@ const PhotoUploadForm = ({ postImage, setPostImage, photos }) => {
     setPostImage({ ...postImage, myFile: base64 });
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="file-upload" className="custom-file-upload">
+    <div className={classes.formWrapper}>
+      <form onSubmit={handleSubmit} className={classes.galleryForm}>
+        <label
+          htmlFor="file-upload"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <img
+            className={classes.galleryFormImage}
             style={{ height: 200, width: 200 }}
             src={postImage.myFile}
             alt=""
           />
         </label>
         <input
+          className={classes.galleryFormInput}
           type="file"
           name="myFile"
           id="file-upload"
           label="Image"
+          title="asdfasdf"
           accept=".jpeg, .png, .jpg"
           onChange={(e) => handleFileUpload(e)}
         />
 
-        <h3>doris</h3>
-        <span>diesigner</span>
-        <button type="submit"> submit</button>
+        <button type="submit" className={classes.galleryFormSubmitButton}>
+          Submit
+        </button>
       </form>
     </div>
   );

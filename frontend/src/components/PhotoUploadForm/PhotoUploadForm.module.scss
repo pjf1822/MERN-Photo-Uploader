@@ -1,0 +1,62 @@
+.formWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.galleryForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.galleryFormImage {
+  border-radius: 10px;
+  box-shadow: 10px 5px 15px rgba(0, 0, 0, 0.288);
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0);
+  outline-color: transparent;
+  object-fit: cover;
+}
+
+.galleryFormInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.galleryFormInput::file-selector-button {
+  margin-top: 10px;
+  display: inline-block;
+  background-color: rgb(20, 150, 220);
+  padding: 1rem 2rem;
+  font-size: 1.8rem;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.3s ease background-color, 0.3s ease color;
+  &:hover {
+    color: rgb(20, 150, 220);
+    background-color: rgb(238, 238, 250);
+  }
+}
+
+.galleryFormSubmitButton {
+  width: 60%;
+  margin-top: 10px;
+  display: inline-block;
+  background-color: rgb(20, 150, 220);
+  padding: 1rem 2rem;
+  font-size: 1.8rem;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.3s ease background-color, 0.3s ease color;
+  &:hover {
+    color: rgb(20, 150, 220);
+    background-color: rgb(238, 238, 250);
+  }
+}
