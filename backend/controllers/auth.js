@@ -33,7 +33,7 @@ export const register = async (req, res, next) => {
 
     return res.status(201).json({ message: "good job" });
   } catch (error) {
-    return next(err);
+    return next(error);
   }
 };
 
@@ -81,7 +81,7 @@ export const login = async (req, res, next) => {
       .cookie("access_token", token, {
         httpOnly: true,
         path: "/",
-        expires: new Date(Date.now() + 1000 * 86400), // 1 day 
+        expires: new Date(Date.now() + 1000 * 86400), // 1 day
         SameSite: "Lax",
       })
       .status(200)
@@ -102,7 +102,6 @@ export const logout = async (req, res) => {
 };
 
 export const isLoggedIn = async (req, res) => {
- 
   const token = req.cookies.access_token;
 
   if (!token) {

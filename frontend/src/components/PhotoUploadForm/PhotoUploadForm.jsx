@@ -1,26 +1,29 @@
 import { useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
-const PhotoUploadForm = () => {
-  const url = "api/photos/uploads";
-  const [postImage, setPostImage] = useState({
-    myFile: "",
-  });
-
+const PhotoUploadForm = ({ postImage, setPostImage, photos }) => {
   const createPost = async (newImage) => {
     try {
       await axios.post("api/photos/uploads", newImage);
     } catch (error) {
+      toast.error(error.response.statusText);
+
       console.log(error);
     }
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (photos.length > 4) {
+      return toast.error("you have too may photos uploaded sorry");
+    }
+
     createPost(postImage);
   };
 
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
+    console.log(file.size);
     const base64 = await convertToBase64(file);
     setPostImage({ ...postImage, myFile: base64 });
   };
