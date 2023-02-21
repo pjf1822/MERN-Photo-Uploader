@@ -45,7 +45,7 @@ const EditProfileForm = () => {
   };
 
   return (
-    <div>
+    <div className={classes.editProfileFormWrapper}>
       <Link className={classes.backBtn} to="/">
         <BsArrowLeftShort />
         Home
