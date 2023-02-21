@@ -46,38 +46,47 @@ const EditProfileForm = () => {
 
   return (
     <div className={classes.editProfileFormWrapper}>
-      <Link className={classes.backBtn} to="/">
-        <BsArrowLeftShort />
-        Home
+      <Link className={classes.backBtnWrapper} to="/">
+        <h4 className={classes.backBtn}>Go Home</h4>
       </Link>
-      <div>
-        <h1>Edit Profile</h1>
-        <form className={classes.editForm} onSubmit={updateProfile}>
-          <label htmlFor="name">
-            Full Name:
-            <input
-              name="username"
-              type="text"
-              placeholder="Full Name"
-              required
-              value={user.username}
-              onChange={updateUserInfo}
-            />
-          </label>
-          <label htmlFor="email">
-            email:
-            <input
-              name="email"
-              type="email"
-              placeholder="email"
-              required
-              value={user.email}
-              onChange={updateUserInfo}
-            />
-          </label>
-          <button type="submit">Save</button>
-        </form>
-      </div>
+      <h1
+        className={classes.editTitle}
+        style={{
+          textAlign: "center",
+          fontSize: 30,
+        }}
+      >
+        Edit Profile
+      </h1>
+      <form className={classes.editForm} onSubmit={updateProfile}>
+        <label className={classes.formLabel} htmlFor="name">
+          Full Name:
+          <input
+            name="username"
+            type="text"
+            placeholder="Full Name"
+            required
+            value={user.username}
+            onChange={updateUserInfo}
+            style={{ marginTop: 15 }}
+          />
+        </label>
+        <label className={classes.formLabel} htmlFor="email">
+          email:
+          <input
+            name="email"
+            type="email"
+            placeholder="email"
+            required
+            value={user.email}
+            onChange={updateUserInfo}
+            style={{ marginTop: 15 }}
+          />
+        </label>
+        <button className={classes.updateProfileButton} type="submit">
+          Save
+        </button>
+      </form>
     </div>
   );
 };
