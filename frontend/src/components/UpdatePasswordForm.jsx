@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { BsArrowLeftShort } from "react-icons/bs";
 import axios from "axios";
 import toast from "react-hot-toast";
 import classes from "./UpdatePasswordForm.module.scss";
@@ -17,7 +16,7 @@ const UpdatePasswordForm = () => {
   const updatePassword = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put("api/users/me/change_password", userPassword);
+      await axios.put("api/users/me/change_password", userPassword);
       toast.success("password updated");
       navigate("/");
     } catch (error) {
@@ -33,10 +32,18 @@ const UpdatePasswordForm = () => {
   };
   return (
     <div className={classes.formWrapper}>
-      <Link className={classes.backBtn} to="/">
-        <h4>Home</h4>
+      <Link className={classes.backBtnWrapper} to="/">
+        <h4 className={classes.backBtn}>Go Home</h4>
       </Link>
-      <h1 style={{ textAlign: "center" }}>Edit Password</h1>
+      <h1
+        className={classes.editPasswordTitle}
+        style={{
+          textAlign: "center",
+          fontSize: 30,
+        }}
+      >
+        Edit Password
+      </h1>
       <form className={classes.editForm} onSubmit={updatePassword}>
         <label className={classes.formLabel} htmlFor="oldPassword">
           Old Password
@@ -47,10 +54,11 @@ const UpdatePasswordForm = () => {
             required
             value={userPassword.oldPassword}
             onChange={handlePassword}
+            style={{ marginTop: 15 }}
           />
         </label>
         <label className={classes.formLabel} htmlFor="newPassword">
-          new Password
+          New Password
           <input
             name="newPassword"
             type="password"
@@ -58,9 +66,12 @@ const UpdatePasswordForm = () => {
             required
             value={userPassword.newPassword}
             onChange={handlePassword}
+            style={{ marginTop: 15 }}
           />
         </label>
-        <button type="submit">Update Password</button>
+        <button className={classes.updatePasswordButton} type="submit">
+          Update Password
+        </button>
       </form>
     </div>
   );

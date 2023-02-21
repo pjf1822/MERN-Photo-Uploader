@@ -1,16 +1,10 @@
 import React from "react";
 import UpdatePasswordForm from "../components/UpdatePasswordForm";
-
+import classes from "../components/UpdatePasswordForm.module.scss";
 const UpdatePassword = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        marginTop: "10%",
-        height: "100vh",
-      }}
-    >
+    <div className={classes.updatePasswordPageWrapper}>
+      <div className={classes.updatePageBackgroundImage}></div>
       <UpdatePasswordForm />
     </div>
   );
