@@ -6,11 +6,9 @@ import classes from "./PhotoUploadForm.module.scss";
 const PhotoUploadForm = ({ postImage, setPostImage, photos }) => {
   const createPost = async (newImage) => {
     try {
-      console.log("we are making it this far in the form");
       await axios.post("api/photos/uploads", newImage);
     } catch (error) {
       toast.error(error.response.statusText);
-
       console.log(error);
     }
   };

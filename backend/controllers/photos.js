@@ -14,14 +14,14 @@ export const getAllPhotos = async (req, res, next) => {
 };
 
 export const uploadPhoto = async (req, res, next) => {
-  const body = req.body;
-
+  const newPhoto = new Photo({
+    user: req.user.id,
+    myFile: req.body.myFile,
+  });
   try {
-    console.log("this is the here");
-
-    const newImage = await Photo.create(body);
-    console.log(newImage, "this is the new image");
-    newImage.save();
+    // const newImage = await Photo.create(body);
+    // console.log(newImage, "this is the new image");
+    newPhoto.save();
     res.status(201).json({ message: "new uploaded" });
   } catch (error) {
     res.status(409).json({ message: error.message });
