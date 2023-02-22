@@ -18,31 +18,31 @@ const Login = () => {
         email,
         password,
       });
-      toast.success('Logged In successfully');
+      toast.success("Logged In successfully");
       navigate("/");
     } catch (error) {
       console.log(error);
-      toast.error('login failed');
-
+      toast.error("login failed");
     }
   };
   return (
     <div className={classes.register}>
       <h1 className={classes.title}>Login</h1>
       <form className={classes.authForm} onSubmit={login}>
-        <label htmlFor="email">
-          email:
+        <label style={{ textAlign: "center" }} htmlFor="email">
+          Email:
           <input
             name="email"
             id="email"
             type="email"
             placeholder="email"
             required
+            style={{}}
           />
         </label>
         <br />
-        <label htmlFor="password">
-          password:
+        <label style={{ textAlign: "center" }} htmlFor="password">
+          Password:
           <input
             name="password"
             type="password"
@@ -51,7 +51,9 @@ const Login = () => {
           />
         </label>
         <br />
-        <button type="submit">Login</button>
+        <button className={classes.loginButton} type="submit">
+          Login
+        </button>
       </form>
     </div>
   );

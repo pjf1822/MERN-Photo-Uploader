@@ -25,7 +25,7 @@ const Register = () => {
     <div className={classes.register}>
       <h1 className={classes.title}>Register</h1>
       <form className={classes.authForm} onSubmit={register}>
-        <label htmlFor="name">
+        <label style={{ textAlign: "center" }} htmlFor="name">
           Full Name:
           <input
             name="name"
@@ -35,13 +35,13 @@ const Register = () => {
             required
           />
         </label>
-        <label htmlFor="email">
-          email:
+        <label style={{ textAlign: "center" }} htmlFor="email">
+          Email:
           <input name="email" type="email" placeholder="email" required />
         </label>
         <br />
-        <label htmlFor="password">
-          password:
+        <label style={{ textAlign: "center" }} htmlFor="password">
+          Password:
           <input
             name="password"
             type="password"
@@ -50,7 +50,9 @@ const Register = () => {
           />
         </label>
         <br />
-        <button type="submit">Register</button>
+        <button className={classes.registerButton} type="submit">
+          Register
+        </button>
       </form>
     </div>
   );

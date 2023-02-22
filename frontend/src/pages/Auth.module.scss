@@ -1,7 +1,21 @@
 .form_container {
   display: flex;
   gap: 2rem;
-  @media only screen and (max-width: 768px) {
-    flex-direction: column;
-  }
+  padding: 20px;
+  flex: 0.4;
+  background-color: rgb(238, 238, 250);
+  flex-direction: column;
+}
+
+.authPageWrapper {
+  display: flex;
+  background-image: url("https://images.unsplash.com/photo-1500051638674-ff996a0ec29e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1818&q=80");
+}
+
+.form_container_pic {
+  flex: 0.7;
+  height: 100vh;
+  width: 100vw;
+
+  background-image: url("https://images.unsplash.com/photo-1500051638674-ff996a0ec29e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1818&q=80");
 }
