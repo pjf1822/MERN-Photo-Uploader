@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import classes from "./PhotoGallery.module.scss";
 const PhotoGallery = ({ photos, setPhotos }) => {
   const getAllPhotos = async () => {
     try {
-      const { data } = await axios.get("/api/photos/getall");
+      const { data } = await axios.get("/api/photos/getusersphotos");
       setPhotos(data);
     } catch (error) {
       console.log(error);

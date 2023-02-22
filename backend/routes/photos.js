@@ -8,8 +8,7 @@ import {
 const router = express.Router();
 
 router.get("/getall", getAllPhotos);
-router.get("/getusers", getUsersPhotos);
-
+router.get("/getusersphotos", getUsersPhotos);
 router.post("/uploads", uploadPhoto);
 router.delete("/delete/:id", deletePhoto);
 
