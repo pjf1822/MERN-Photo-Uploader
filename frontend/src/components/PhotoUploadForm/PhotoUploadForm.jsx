@@ -16,7 +16,7 @@ const PhotoUploadForm = ({ postImage, setPostImage, photos }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (photos.length > 4) {
+    if (photos.length > 8) {
       return toast.error("you have too may photos uploaded sorry");
     }
 

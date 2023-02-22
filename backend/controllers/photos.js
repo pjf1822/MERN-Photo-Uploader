@@ -35,3 +35,12 @@ export const deletePhoto = async (req, res) => {
     return res.send(err);
   }
 };
+
+export const getUsersPhotos = async (req, res) => {
+  try {
+    const photos = await Photo.find({ user: req.user.id });
+    return res.status(200).json(photos);
+  } catch (err) {
+    return next(err);
+  }
+};

@@ -51,7 +51,7 @@ const Navbar = () => {
         </div>
         <div className={classes.nameWrapper}>
           <h1 className={classes.name}> {user.username.toUpperCase()}</h1>
-          <h1 className={classes.email}> {user.email}</h1>
+          {/* <h1 className={classes.email}> {user.email}</h1> */}
         </div>
       </div>
       <nav className={classes.nav}>
