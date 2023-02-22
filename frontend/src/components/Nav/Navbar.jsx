@@ -4,6 +4,7 @@ import classes from "./Navbar.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
 import { toast } from "react-hot-toast";
+import logoThing from "../../personal-gallery-logo-zip-file/png/logo-no-background.png";
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
@@ -39,6 +40,9 @@ const Navbar = () => {
     <header>
       <div className={classes.userInfo}>
         <div>
+          <img src={logoThing} className={classes.logo} />
+        </div>
+        <div className={classes.nameWrapper}>
           <h1 className={classes.name}> {user.username}</h1>
           <h1 className={classes.email}> {user.email}</h1>
         </div>

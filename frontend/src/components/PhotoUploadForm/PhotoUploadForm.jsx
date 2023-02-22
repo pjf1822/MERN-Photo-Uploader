@@ -38,11 +38,11 @@ const PhotoUploadForm = ({ postImage, setPostImage, photos }) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            marginTop: "20px",
           }}
         >
           <img
             className={classes.galleryFormImage}
-            style={{ height: 400, width: 400 }}
             src={postImage.myFile}
             alt=""
           />

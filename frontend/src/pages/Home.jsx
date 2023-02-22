@@ -3,6 +3,7 @@ import Navbar from "../components/Nav/Navbar";
 import PhotoGallery from "../components/PhotoGallery/PhotoGallery";
 import PhotoUploadForm from "../components/PhotoUploadForm/PhotoUploadForm";
 import { useEffect, useState } from "react";
+import classes from "./Home.module.scss";
 const Home = () => {
   const [photos, setPhotos] = useState([]);
   const [postImage, setPostImage] = useState({
@@ -15,12 +16,14 @@ const Home = () => {
 
   return (
     <Layout>
-      <Navbar />
-      <PhotoUploadForm
-        postImage={postImage}
-        setPostImage={setPostImage}
-        photos={photos}
-      />
+      <div className={classes.homeWrapper}>
+        <Navbar />
+        <PhotoUploadForm
+          postImage={postImage}
+          setPostImage={setPostImage}
+          photos={photos}
+        />
+      </div>
       <PhotoGallery photos={photos} setPhotos={setPhotos} />
     </Layout>
   );

@@ -2,33 +2,41 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
   margin-bottom: 34px;
+  width: 100%;
 }
 
 .galleryForm {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 20px;
+  padding: 20px;
+  width: 38%;
 }
 
 .galleryFormImage {
   border-radius: 10px;
-  box-shadow: 10px 5px 15px rgba(0, 0, 0, 0.288);
+  box-shadow: 14px 15px 15px rgba(255, 255, 255, 0.288);
   margin-bottom: 20px;
-  border: 2px solid rgba(0, 0, 0, 1);
+  border: 3px solid rgb(255, 255, 255);
   outline-color: transparent;
   object-fit: cover;
+  background-color: rgba(255, 255, 255, 0.623);
+  height: 400px;
+  width: 400px;
 }
 
 .galleryFormInput {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgba(255, 255, 255, 0.716);
+  padding: 10px;
+  border-radius: 20px;
 }
 
 .galleryFormInput::file-selector-button {
-  margin-top: 10px;
   display: inline-block;
   background-color: rgb(20, 150, 220);
   padding: 1rem 2rem;
@@ -46,7 +54,7 @@
 
 .galleryFormSubmitButton {
   width: 60%;
-  margin-top: 10px;
+  margin-top: 15px;
   display: inline-block;
   background-color: rgb(20, 150, 220);
   padding: 1rem 2rem;
@@ -59,5 +67,25 @@
   &:hover {
     color: rgb(20, 150, 220);
     background-color: rgb(238, 238, 250);
+  }
+}
+
+@media (max-width: 500px) {
+  .galleryFormImage {
+    width: 300px;
+  }
+
+  .galleryFormSubmitButton {
+    width: 80%;
+  }
+
+  .galleryForm {
+    width: 68%;
+  }
+}
+
+@media (max-width: 400px) {
+  .galleryFormImage {
+    width: 250px;
   }
 }
