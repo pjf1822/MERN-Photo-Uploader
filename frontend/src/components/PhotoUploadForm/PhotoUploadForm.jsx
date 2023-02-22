@@ -3,12 +3,13 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import classes from "./PhotoUploadForm.module.scss";
 
-const PhotoUploadForm = ({ postImage, setPostImage, photos }) => {
+const PhotoUploadForm = ({ postImage, setPostImage, photos, setPhotos }) => {
   const createPost = async (newImage) => {
     try {
       await axios.post("api/photos/uploads", newImage);
-
       toast.success("Photo Uploaded!");
+      const { data } = await axios.get("/api/photos/getusersphotos");
+      setPhotos(data);
     } catch (error) {
       toast.error(error.response.statusText);
       console.log(error);
@@ -16,10 +17,9 @@ const PhotoUploadForm = ({ postImage, setPostImage, photos }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (photos.length > 8) {
+    if (photos.length > 6) {
       return toast.error("you have too may photos uploaded sorry");
     }
-
     createPost(postImage);
   };
 

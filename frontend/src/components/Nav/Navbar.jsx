@@ -39,19 +39,8 @@ const Navbar = () => {
   return (
     <header>
       <div className={classes.userInfo}>
-        <div
-          style={{
-            position: "relative",
-            height: "100px",
-            width: "130px",
-            marginRight: "20px",
-          }}
-        >
-          <img src={logoThing} className={classes.logo} />
-        </div>
         <div className={classes.nameWrapper}>
           <h1 className={classes.name}> {user.username.toUpperCase()}</h1>
-          {/* <h1 className={classes.email}> {user.email}</h1> */}
         </div>
       </div>
       <nav className={classes.nav}>

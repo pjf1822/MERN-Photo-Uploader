@@ -22,6 +22,7 @@ const Home = () => {
           postImage={postImage}
           setPostImage={setPostImage}
           photos={photos}
+          setPhotos={setPhotos}
         />
       </div>
       <PhotoGallery photos={photos} setPhotos={setPhotos} />
