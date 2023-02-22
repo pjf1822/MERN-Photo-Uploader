@@ -17,7 +17,10 @@ export const uploadPhoto = async (req, res, next) => {
   const body = req.body;
 
   try {
+    console.log("this is the here");
+
     const newImage = await Photo.create(body);
+    console.log(newImage, "this is the new image");
     newImage.save();
     res.status(201).json({ message: "new uploaded" });
   } catch (error) {
@@ -37,10 +40,8 @@ export const deletePhoto = async (req, res) => {
 };
 
 export const getUsersPhotos = async (req, res) => {
-  console.log(req.user, "this is the current user");
   try {
     const photos = await Photo.find({ user: req.user.id });
-    console.log(photos, "this si the array of photos for this user");
     return res.status(200).json(photos);
   } catch (err) {
     return next(err);

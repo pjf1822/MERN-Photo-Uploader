@@ -6,8 +6,8 @@ import classes from "./PhotoUploadForm.module.scss";
 const PhotoUploadForm = ({ postImage, setPostImage, photos }) => {
   const createPost = async (newImage) => {
     try {
+      console.log("we are making it this far in the form");
       await axios.post("api/photos/uploads", newImage);
-      // setPostImage({ myFile: "" });
     } catch (error) {
       toast.error(error.response.statusText);
 
@@ -25,7 +25,6 @@ const PhotoUploadForm = ({ postImage, setPostImage, photos }) => {
 
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
-    console.log(file.size);
     const base64 = await convertToBase64(file);
     setPostImage({ ...postImage, myFile: base64 });
   };
