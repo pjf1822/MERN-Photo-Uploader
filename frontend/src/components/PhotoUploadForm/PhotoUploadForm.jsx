@@ -7,6 +7,8 @@ const PhotoUploadForm = ({ postImage, setPostImage, photos }) => {
   const createPost = async (newImage) => {
     try {
       await axios.post("api/photos/uploads", newImage);
+
+      toast.success("Photo Uploaded!");
     } catch (error) {
       toast.error(error.response.statusText);
       console.log(error);

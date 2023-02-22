@@ -16,6 +16,7 @@ const Auth = () => {
               widht: "90%",
               height: "2px",
               backgroundColor: "rgb(20,150,220)",
+              margin: "30px 0px",
             }}
           ></div>
           <Register />

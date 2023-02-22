@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { model } from "mongoose";
 
 const { Schema } = mongoose;
 
@@ -22,6 +22,7 @@ const userSchema = new Schema({
     required: [true, "Please add a password"],
     minLength: [6, "Password must be up to 6 characters"],
   },
+  photos: [{ type: mongoose.Types.ObjectId, ref: "Photo" }],
 });
 
 export default mongoose.model("User", userSchema);

@@ -1,4 +1,7 @@
 import Photo from "../models/Photo.js";
+import User from "../models/User.js";
+import mongoose from "mongoose";
+
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import createError from "../utils/createError.js";
@@ -14,18 +17,37 @@ export const getAllPhotos = async (req, res, next) => {
 };
 
 export const uploadPhoto = async (req, res, next) => {
-  const newPhoto = new Photo({
-    user: req.user.id,
-    myFile: req.body.myFile,
-  });
+  let existingUser;
+
   try {
-    // const newImage = await Photo.create(body);
-    // console.log(newImage, "this is the new image");
-    newPhoto.save();
-    res.status(201).json({ message: "new uploaded" });
-  } catch (error) {
-    res.status(409).json({ message: error.message });
+    existingUser = await User.findById(req.user.id);
+  } catch (err) {
+    return console.log(err);
   }
+
+  if (!existingUser) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  let photo;
+  try {
+    photo = new Photo({
+      myFile: req.body.myFile,
+      user: req.user.id,
+    });
+    const session = await mongoose.startSession();
+    session.startTransaction();
+    existingUser.photos.push(photo);
+
+    await existingUser.save({ session });
+    photo = await photo.save({ session });
+    session.commitTransaction();
+  } catch (error) {
+    console.log(error);
+  }
+
+  // newPhoto.save();
+  res.status(201).json({ message: "new uploaded" });
 };
 
 export const deletePhoto = async (req, res) => {
