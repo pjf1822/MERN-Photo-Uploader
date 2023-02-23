@@ -30,7 +30,9 @@ const connectDB = async () => {
   try {
     await mongoose
       .set("strictQuery", true)
-      .connect(process.env.DB_CONNECTION_STRING);
+      .connect(
+        "mongodb+srv://paul:paul@cluster0.kvtjn96.mongodb.net/bigproject?retryWrites=true&w=majority"
+      );
 
     console.log("database connecteddd");
   } catch (error) {
