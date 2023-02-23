@@ -7,7 +7,7 @@ import cookieParser from "cookie-parser";
 import allRoutes from "./routes/index.js";
 
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = 8000;
 
 // middleware
 app.use(cors());
@@ -39,7 +39,7 @@ const connectDB = async () => {
   }
 };
 // run express server
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
   connectDB();
   console.log(`the server has started on port ${PORT}`);
 });
